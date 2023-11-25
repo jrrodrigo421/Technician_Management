@@ -11,7 +11,6 @@ const TechnicianList = () => {
 
 
   useEffect(() => {
-    // Função para buscar técnicos do backend
     const fetchTechnicians = async () => {
       try {
         const response = await axios.get('http://localhost:3030/technicians');
@@ -24,9 +23,21 @@ const TechnicianList = () => {
       }
     };
 
-    // Chama a função para buscar técnicos ao montar o componente
     fetchTechnicians();
-  }, []); // O array vazio como segundo argumento garante que o useEffect só será chamado uma vez, equivalente a componentDidMount
+  }, []);
+
+  const handleDelete = async (id) => {
+    try {
+
+      await axios.delete(`http://localhost:3030/technicians/${id}`);
+
+
+      setTechnicians((prevTechnicians) => prevTechnicians.filter((technician) => technician.id !== id));
+    } catch (error) {
+      console.error('Error deleting technician:', error);
+
+    }
+  };
 
   if (loading) {
     return <p>Carregando...</p>;
@@ -61,7 +72,9 @@ const TechnicianList = () => {
               <td>
                 <Link to={`/view/${technician.id}`} className="view-technician-link">Ver</Link>
                 <Link to={`/edit/${technician.id}`} className="edit-technician-link">Editar</Link>
-                {/* Adicione a lógica de exclusão aqui */}
+                <button onClick={() => handleDelete(technician.id)} className="delete-technician-button">
+                  Excluir
+                </button>
               </td>
             </tr>
           ))}
