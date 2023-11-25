@@ -65,7 +65,7 @@ const TechnicianList = () => {
               <td>{technician.name}</td>
 
               <td>
-                <Link to={`/view/${technician.id}`} className="view-technician-link">Ver</Link>
+                <Link to={`/view/${technician.id}`} className="view-technician-link">Detalhes</Link>
                 <Link to={`/edit/${technician.id}`} className="edit-technician-link">Editar</Link>
                 <button onClick={() => handleDelete(technician.id)} className="delete-technician-button">
                   Excluir

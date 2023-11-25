@@ -33,3 +33,7 @@
   text-decoration: none;
   color: #28a745;
 }
+
+.delete-technician-button {
+  background-color: red;
+}
