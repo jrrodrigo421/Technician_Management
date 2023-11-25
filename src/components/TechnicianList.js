@@ -27,6 +27,13 @@ const TechnicianList = () => {
   }, []);
 
   const handleDelete = async (id) => {
+
+    const confirmed = window.confirm('Tem certeza que deseja excluir este técnico?');
+
+    if (!confirmed) {
+      return;
+    }
+
     try {
 
       await axios.delete(`http://localhost:3030/technicians/${id}`);
