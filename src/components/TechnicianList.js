@@ -56,9 +56,6 @@ const TechnicianList = () => {
         <thead>
           <tr>
             <th>Nome</th>
-            <th>E-mail</th>
-            <th>Telefone</th>
-            <th>Endereço</th>
             <th>Ações</th>
           </tr>
         </thead>
@@ -66,9 +63,7 @@ const TechnicianList = () => {
           {technicians.map((technician) => (
             <tr key={technician.id}>
               <td>{technician.name}</td>
-              <td>{technician.email}</td>
-              <td>{technician.telephone}</td>
-              <td>{technician.address}</td>
+
               <td>
                 <Link to={`/view/${technician.id}`} className="view-technician-link">Ver</Link>
                 <Link to={`/edit/${technician.id}`} className="edit-technician-link">Editar</Link>

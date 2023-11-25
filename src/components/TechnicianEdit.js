@@ -48,7 +48,7 @@ const TechnicianEdit = () => {
 
   return (
     <div style={{ padding: '20px' }}>
-      <h2 style={{ marginBottom: '20px' }}>Edit Technician</h2>
+      <h2 style={{ marginBottom: '20px' }}>Edição de cadastro:</h2>
       <form onSubmit={handleSubmit}>
         <label style={{ display: 'block', marginBottom: '10px', marginRight: '50px' }}>
           Name:
@@ -109,11 +109,11 @@ const TechnicianEdit = () => {
             cursor: 'pointer',
           }}
         >
-          Save Edits
+          Confirmar
         </button>
       </form>
       <Link to="/" style={{ display: 'block', marginTop: '20px' }}>
-        Back to Technician List
+        Voltar para consulta
       </Link>
     </div>
   );
