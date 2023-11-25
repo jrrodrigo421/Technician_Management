@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const TechnicianForm = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +10,8 @@ const TechnicianForm = () => {
     address: '',
   });
   const [error, setError] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({
@@ -35,6 +37,9 @@ const TechnicianForm = () => {
         address: '',
       });
 
+      setSuccessMessage('Técnico cadastrado com sucesso!');
+
+
       setError(null);
     } catch (error) {
       console.error('Erro ao cadastrar técnico:', error);
@@ -47,9 +52,15 @@ const TechnicianForm = () => {
     }
   };
 
+  const handleCancel = () => {
+    navigate('/');
+  };
+
   return (
     <div style={{ padding: '20px' }}>
       <h2 style={{ marginBottom: '20px' }}>Cadastrar Técnico</h2>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
       <form onSubmit={handleSubmit}>
         <label style={{ display: 'block', marginBottom: '10px', marginRight: '50px' }}>
           Nome:
@@ -111,6 +122,20 @@ const TechnicianForm = () => {
           }}
         >
           Cadastrar
+        </button>
+        <button
+          type="button" onClick={handleCancel}
+          style={{
+
+            backgroundColor: '#DC250C',
+            color: 'white',
+            padding: '10px 15px',
+            border: 'none',
+            borderRadius: '5px',
+            cursor: 'pointer',
+          }}
+        >
+          Cancelar
         </button>
       </form>
       {error && <p style={{ color: 'red', marginTop: '10px' }}>{error}</p>}

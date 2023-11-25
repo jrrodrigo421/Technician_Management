@@ -13,6 +13,10 @@ const TechnicianEdit = () => {
     address: '',
   });
 
+  const [error, setError] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
+
+
   useEffect(() => {
     const fetchTechnicianDetails = async () => {
       try {
@@ -40,15 +44,30 @@ const TechnicianEdit = () => {
       const formattedData = { ...formData, telephone: parseInt(formData.telephone, 10) };
 
       await axios.put(`http://localhost:3030/technicians/${id}`, formattedData);
-      navigate('/');
+
+      // Exibir mensagem de sucesso
+      setSuccessMessage('Cadastro do técnico alterado com sucesso!');
+
+      // Limpar mensagem de erro
+      setError(null);
+
+
+
     } catch (error) {
       console.error('Error editing technician:', error);
+      setError(error.response?.data?.message || 'Erro ao editar técnico.');
     }
+  };
+
+  const handleCancel = () => {
+    navigate('/');
   };
 
   return (
     <div style={{ padding: '20px' }}>
       <h2 style={{ marginBottom: '20px' }}>Edição de cadastro:</h2>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
       <form onSubmit={handleSubmit}>
         <label style={{ display: 'block', marginBottom: '10px', marginRight: '50px' }}>
           Name:
@@ -111,6 +130,20 @@ const TechnicianEdit = () => {
         >
           Confirmar
         </button>
+        <button onClick={handleCancel}
+          type="button"
+          style={{
+            backgroundColor: '#B72808',
+            color: 'white',
+            padding: '10px 15px',
+            border: 'none',
+            borderRadius: '5px',
+            cursor: 'pointer',
+          }}
+        >
+          Cancelar
+        </button>
+
       </form>
       <Link to="/" style={{ display: 'block', marginTop: '20px' }}>
         Voltar para consulta

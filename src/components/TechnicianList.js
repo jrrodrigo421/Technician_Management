@@ -49,7 +49,7 @@ const TechnicianList = () => {
 
   return (
     <div className="technician-list-container">
-      <h2>Lista de Técnicos</h2>
+      <h2>Consulta Técnicos</h2>
       <Link to="/add" className="add-technician-link">Cadastrar Novo Técnico</Link>
 
       <table className="technician-table">
