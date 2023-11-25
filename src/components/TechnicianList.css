@@ -1,0 +1,37 @@
+/* TechnicianList.css */
+
+.technician-list-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.add-technician-link {
+  display: block;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #007BFF;
+}
+
+.technician-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.technician-table th,
+.technician-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.technician-table th {
+  background-color: #f2f2f2;
+}
+
+.view-technician-link,
+.edit-technician-link {
+  margin-right: 10px;
+  text-decoration: none;
+  color: #28a745;
+}

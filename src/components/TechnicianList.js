@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+import './TechnicianList.css';
 
 const TechnicianList = () => {
   const [technicians, setTechnicians] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
 
   useEffect(() => {
     // Função para buscar técnicos do backend
@@ -35,20 +37,36 @@ const TechnicianList = () => {
   }
 
   return (
-    <div>
+    <div className="technician-list-container">
       <h2>Lista de Técnicos</h2>
-      <Link to="/add">Cadastrar Novo Técnico</Link>
+      <Link to="/add" className="add-technician-link">Cadastrar Novo Técnico</Link>
 
-      <ul>
-        {technicians.map((technician) => (
-          <li key={technician.id}>
-            {technician.name}
-            <Link to={`/view/${technician.id}`}>Ver</Link>
-            <Link to={`/edit/${technician.id}`}>Editar</Link>
-            {/* Adicione a lógica de exclusão aqui */}
-          </li>
-        ))}
-      </ul>
+      <table className="technician-table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Telefone</th>
+            <th>Endereço</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          {technicians.map((technician) => (
+            <tr key={technician.id}>
+              <td>{technician.name}</td>
+              <td>{technician.email}</td>
+              <td>{technician.telephone}</td>
+              <td>{technician.address}</td>
+              <td>
+                <Link to={`/view/${technician.id}`} className="view-technician-link">Ver</Link>
+                <Link to={`/edit/${technician.id}`} className="edit-technician-link">Editar</Link>
+                {/* Adicione a lógica de exclusão aqui */}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
