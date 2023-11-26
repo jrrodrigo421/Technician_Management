@@ -36,10 +36,12 @@ const TechnicianList = () => {
 
     try {
 
-      await axios.delete(`http://localhost:3030/technicians/${id}`);
+      await axios.patch(`http://localhost:3030/technicians/${id}`, { deleted: true });
 
 
-      setTechnicians((prevTechnicians) => prevTechnicians.filter((technician) => technician.id !== id));
+      setTechnicians((prevTechnicians) =>
+        prevTechnicians.filter((technician) => technician.id !== id)
+      );
     } catch (error) {
       console.error('Error deleting technician:', error);
 
@@ -54,6 +56,8 @@ const TechnicianList = () => {
     return <p>{error}</p>;
   }
 
+  const filteredTechnicians = technicians.filter((technician) => !technician.deleted);
+
   return (
     <div className="technician-list-container">
       <h2>Consulta Técnicos</h2>
@@ -67,7 +71,7 @@ const TechnicianList = () => {
           </tr>
         </thead>
         <tbody>
-          {technicians.map((technician) => (
+          {filteredTechnicians.map((technician) => (
             <tr key={technician.id}>
               <td>{technician.name}</td>
 
