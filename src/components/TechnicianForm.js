@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
+import './TechnicianForm.css'
+
 const TechnicianForm = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -57,7 +59,8 @@ const TechnicianForm = () => {
   };
 
   return (
-    <div style={{ padding: '20px' }}>
+
+    <div className="form-container" style={{ padding: '20px' }}>
       <h2 style={{ marginBottom: '20px' }}>Cadastrar Técnico</h2>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
@@ -139,8 +142,8 @@ const TechnicianForm = () => {
         </button>
       </form>
       {error && <p style={{ color: 'red', marginTop: '10px' }}>{error}</p>}
-      <Link to="/" style={{ display: 'block', marginTop: '20px' }}>
-        Voltar para a lista de técnicos
+      <Link to="/" style={{ display: 'block', marginTop: '20px', backgroundColor: '#007BFF', color: 'white', padding: '10px 15px', borderRadius: '5px', textDecoration: 'none' }}>
+        Voltar para consulta
       </Link>
     </div>
   );

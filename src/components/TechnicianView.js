@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, Link } from 'react-router-dom';
 
+
+
 const TechnicianView = () => {
   const { id } = useParams();
   const [technician, setTechnician] = useState(null);
@@ -44,8 +46,8 @@ const TechnicianView = () => {
       <p>
         <strong>Endereço:</strong> {technician.address}
       </p>
-      <Link to="/" className="view-technician-link">
-        Pagina consulta
+      <Link to="/" style={{ display: 'block', marginTop: '20px', backgroundColor: '#007BFF', color: 'white', padding: '10px 15px', borderRadius: '5px', textDecoration: 'none' }}>
+        Voltar para consulta
       </Link>
     </div>
   );
