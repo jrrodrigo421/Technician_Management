@@ -32,24 +32,27 @@ const TechnicianView = () => {
   }
 
   return (
-    <div className="technician-list-container" style={{ padding: '20px' }}>
-      <h2>Detalhes do cadastro</h2>
-      <p>
+    // <div className="technician-view-container" style={{ backgroundImage: 'url(/logo_pratica_branco.png)', backgroundSize: 'cover', backgroundPosition: 'center', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontFamily: 'Arial, sans-serif' }}>
+
+    <div className="technician-list-container" style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+      <h2 style={{ fontSize: '24px', marginBottom: '20px', fontWeight: 'bold' }}>Detalhes do Cadastro</h2>
+      <p style={{ fontSize: '18px', marginBottom: '10px' }}>
         <strong>Nome:</strong> {technician.name}
       </p>
-      <p>
+      <p style={{ fontSize: '18px', marginBottom: '10px' }}>
         <strong>Telefone:</strong> {technician.telephone}
       </p>
-      <p>
+      <p style={{ fontSize: '18px', marginBottom: '10px' }}>
         <strong>Email:</strong> {technician.email}
       </p>
-      <p>
+      <p style={{ fontSize: '18px', marginBottom: '10px' }}>
         <strong>Endereço:</strong> {technician.address}
       </p>
-      <Link to="/" style={{ display: 'block', marginTop: '20px', backgroundColor: '#007BFF', color: 'white', padding: '10px 15px', borderRadius: '5px', textDecoration: 'none' }}>
-        Voltar para consulta
+      <Link to="/" style={{ display: 'block', marginTop: '20px', backgroundColor: '#007BFF', color: 'white', padding: '12px 18px', borderRadius: '5px', textDecoration: 'none', fontSize: '18px' }}>
+        Voltar para Consulta
       </Link>
     </div>
+    // </div>
   );
 };
 
