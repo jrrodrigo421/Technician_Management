@@ -45,10 +45,10 @@ const TechnicianEdit = () => {
 
       await axios.put(`http://localhost:3030/technicians/${id}`, formattedData);
 
-      // Exibir mensagem de sucesso
+
       setSuccessMessage('Cadastro do técnico alterado com sucesso!');
 
-      // Limpar mensagem de erro
+      // limpa msg erro
       setError(null);
 
 
@@ -82,7 +82,7 @@ const TechnicianEdit = () => {
         </label>
         <br />
         <label style={{ display: 'block', marginBottom: '10px' }}>
-          Telephone:
+          Telefone:
           <input
             type="text"
             name="telephone"
@@ -106,7 +106,7 @@ const TechnicianEdit = () => {
         </label>
         <br />
         <label style={{ display: 'block', marginBottom: '10px' }}>
-          Address:
+          Endereço:
           <input
             type="text"
             name="address"

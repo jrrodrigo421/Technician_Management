@@ -33,19 +33,19 @@ const TechnicianView = () => {
     <div className="technician-list-container" style={{ padding: '20px' }}>
       <h2>Detalhes do cadastro</h2>
       <p>
-        <strong>Name:</strong> {technician.name}
+        <strong>Nome:</strong> {technician.name}
       </p>
       <p>
-        <strong>Telephone:</strong> {technician.telephone}
+        <strong>Telefone:</strong> {technician.telephone}
       </p>
       <p>
         <strong>Email:</strong> {technician.email}
       </p>
       <p>
-        <strong>Address:</strong> {technician.address}
+        <strong>Endereço:</strong> {technician.address}
       </p>
       <Link to="/" className="view-technician-link">
-        Voltar para a tela de consulta
+        Pagina consulta
       </Link>
     </div>
   );

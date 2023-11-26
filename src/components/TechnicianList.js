@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+
+
 import './TechnicianList.css';
+import './design.css'
 
 const TechnicianList = () => {
   const [technicians, setTechnicians] = useState([]);
@@ -60,10 +63,10 @@ const TechnicianList = () => {
 
   return (
     <div className="technician-list-container">
-      <h2>Consulta Técnicos</h2>
-      <Link to="/add" className="add-technician-link">Cadastrar Novo Técnico</Link>
+      <h2>Página de consulta</h2>
+      <Link to="/add" className="theme-button">Novo cadastro</Link>
 
-      <table className="technician-table">
+      <table className="technician-table ">
         <thead>
           <tr>
             <th>Nome</th>
@@ -78,7 +81,7 @@ const TechnicianList = () => {
               <td>
                 <Link to={`/view/${technician.id}`} className="view-technician-link">Detalhes</Link>
                 <Link to={`/edit/${technician.id}`} className="edit-technician-link">Editar</Link>
-                <button onClick={() => handleDelete(technician.id)} className="delete-technician-button">
+                <button onClick={() => handleDelete(technician.id)} className="delete-button">
                   Excluir
                 </button>
               </td>

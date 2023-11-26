@@ -14,17 +14,21 @@
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
+  background-color: #27292a;
 }
+
 
 .technician-table th,
 .technician-table td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
+  background-color: #27292a;
+
 }
 
 .technician-table th {
-  background-color: #f2f2f2;
+  background-color: #27292a;
 }
 
 .view-technician-link,
@@ -36,4 +40,24 @@
 
 .delete-technician-button {
   background-color: red;
+}
+
+
+/* Adicione este bloco ao design.css */
+.delete-button {
+  background-color: red;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.delete-button:hover {
+  background-color: #990000;
 }
