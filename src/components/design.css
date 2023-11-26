@@ -41,3 +41,33 @@ p {
 .theme-button:hover {
   background-color: #555;
 }
+
+/* Adicione este bloco ao design.css */
+.action-button {
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.edit-button {
+  background-color: #28a745;
+}
+
+.edit-button:hover {
+  background-color: #218838;
+}
+
+.details-button {
+  background-color: #075aff;
+}
+
+.details-button:hover {
+  background-color: #2944b3;
+}
