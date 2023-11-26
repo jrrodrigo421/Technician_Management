@@ -142,7 +142,7 @@ const TechnicianForm = () => {
         </button>
       </form>
       {error && <p style={{ color: 'red', marginTop: '10px' }}>{error}</p>}
-      <Link to="/" style={{ display: 'block', marginTop: '20px', backgroundColor: '#007BFF', color: 'white', padding: '10px 15px', borderRadius: '5px', textDecoration: 'none' }}>
+      <Link to="/" style={{ display: 'block', marginTop: '20px', backgroundColor: '#000204', color: 'white', padding: '10px 15px', borderRadius: '5px', textDecoration: 'none' }}>
         Voltar para consulta
       </Link>
     </div>

@@ -48,7 +48,7 @@ const TechnicianView = () => {
       <p style={{ fontSize: '18px', marginBottom: '10px' }}>
         <strong>Endereço:</strong> {technician.address}
       </p>
-      <Link to="/" style={{ display: 'block', marginTop: '20px', backgroundColor: '#007BFF', color: 'white', padding: '12px 18px', borderRadius: '5px', textDecoration: 'none', fontSize: '18px' }}>
+      <Link to="/" style={{ display: 'block', marginTop: '20px', backgroundColor: '#010408', color: 'white', padding: '12px 18px', borderRadius: '5px', textDecoration: 'none', fontSize: '18px' }}>
         Voltar para Consulta
       </Link>
     </div>

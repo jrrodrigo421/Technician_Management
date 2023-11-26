@@ -145,7 +145,7 @@ const TechnicianEdit = () => {
         </button>
 
       </form>
-      <Link to="/" style={{ display: 'block', marginTop: '20px', backgroundColor: '#007BFF', color: 'white', padding: '10px 15px', borderRadius: '5px', textDecoration: 'none' }}>
+      <Link to="/" style={{ display: 'block', marginTop: '20px', backgroundColor: '#01060C', color: 'white', padding: '10px 15px', borderRadius: '5px', textDecoration: 'none' }}>
         Voltar para consulta
       </Link>
     </div>
