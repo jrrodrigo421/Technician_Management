@@ -1,10 +1,7 @@
 body {
+
   /* background-image: url('/public/logo_pratica_branco.png'); */
-  background-color: rgba(100, 149, 237, 0.3);
-  /* Cor de fundo com transparência */
-
-
-  background-color: rgb(36, 90, 184);
+  background-color: rgb(5, 58, 151);
   color: white;
   font-family: 'Arial', sans-serif;
   margin: 0;
@@ -47,7 +44,6 @@ p {
   background-color: #555;
 }
 
-/* Adicione este bloco ao design.css */
 .action-button {
   color: #ffffff;
   border: none;

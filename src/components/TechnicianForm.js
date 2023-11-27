@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import InputMask from 'react-input-mask';
 
 import './TechnicianForm.css'
 
@@ -11,6 +12,13 @@ const TechnicianForm = () => {
     email: '',
     address: '',
   });
+
+
+  const formatPhoneNumber = (phoneNumber) => {
+    return phoneNumber.replace(/\D/g, '');
+  };
+
+
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
   const navigate = useNavigate();
@@ -26,9 +34,13 @@ const TechnicianForm = () => {
     e.preventDefault();
 
     try {
-      const formattedData = { ...formData, telephone: parseInt(formData.telephone, 10) };
+      const formattedPhoneNumber = formatPhoneNumber(formData.telephone);
+      const formattedData = { ...formData, telephone: parseInt(formattedPhoneNumber, 10) };
+
 
       const response = await axios.post('http://localhost:3030/technicians', formattedData);
+
+      setSuccessMessage('Cadastro do técnico alterado com sucesso!');
 
       console.log('Técnico cadastrado com sucesso:', response.data);
 
@@ -39,7 +51,7 @@ const TechnicianForm = () => {
         address: '',
       });
 
-      setSuccessMessage('Técnico cadastrado com sucesso!');
+
 
 
       setError(null);
@@ -62,13 +74,13 @@ const TechnicianForm = () => {
 
     <div className="form-container" style={{ padding: '20px' }}>
       <h2 style={{ marginBottom: '20px' }}>Cadastrar Técnico</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
+
       <form onSubmit={handleSubmit}>
         <label style={{ display: 'block', marginBottom: '10px', marginRight: '50px' }}>
           Nome:
           <input
             type="text"
+            placeholder='Digite o nome'
             name="name"
             value={formData.name}
             onChange={handleChange}
@@ -79,8 +91,10 @@ const TechnicianForm = () => {
         <br />
         <label style={{ display: 'block', marginBottom: '10px' }}>
           Telefone:
-          <input
+          <InputMask
             type="text"
+            mask="(99) 9 9999-9999"
+            placeholder='(XX) X XXXX-XXXX'
             name="telephone"
             value={formData.telephone}
             onChange={handleChange}
@@ -93,6 +107,7 @@ const TechnicianForm = () => {
           Email:
           <input
             type="email"
+            placeholder='Digite o e-mail'
             name="email"
             value={formData.email}
             onChange={handleChange}
@@ -106,6 +121,7 @@ const TechnicianForm = () => {
           <input
             type="text"
             name="address"
+            placeholder='Digite o endereço'
             value={formData.address}
             onChange={handleChange}
             required
@@ -141,7 +157,13 @@ const TechnicianForm = () => {
           Cancelar
         </button>
       </form>
+      <br />
+      <br />
+
       {error && <p style={{ color: 'red', marginTop: '10px' }}>{error}</p>}
+
+      {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
+      <br />
       <Link to="/" style={{ display: 'block', marginTop: '20px', backgroundColor: '#000204', color: 'white', padding: '10px 15px', borderRadius: '5px', textDecoration: 'none' }}>
         Voltar para consulta
       </Link>

@@ -2,9 +2,16 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 
+import InputMask from 'react-input-mask';
+
 const TechnicianEdit = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+
+
+  const formatPhoneNumber = (phoneNumber) => {
+    return phoneNumber.replace(/\D/g, '');
+  };
 
   const [formData, setFormData] = useState({
     name: '',
@@ -41,14 +48,14 @@ const TechnicianEdit = () => {
     e.preventDefault();
 
     try {
-      const formattedData = { ...formData, telephone: parseInt(formData.telephone, 10) };
+      const formattedPhoneNumber = formatPhoneNumber(formData.telephone);
+      const formattedData = { ...formData, telephone: parseInt(formattedPhoneNumber, 10) };
 
       await axios.put(`http://localhost:3030/technicians/${id}`, formattedData);
 
 
       setSuccessMessage('Cadastro do técnico alterado com sucesso!');
 
-      // limpa msg erro
       setError(null);
 
 
@@ -66,14 +73,14 @@ const TechnicianEdit = () => {
   return (
     <div style={{ padding: '20px' }}>
       <h2 style={{ marginBottom: '20px' }}>Edição de cadastro:</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
+
       <form onSubmit={handleSubmit}>
         <label style={{ display: 'block', marginBottom: '10px', marginRight: '50px' }}>
           Name:
           <input
             type="text"
             name="name"
+            placeholder='Digiete o nome'
             value={formData.name}
             onChange={handleChange}
             required
@@ -83,8 +90,10 @@ const TechnicianEdit = () => {
         <br />
         <label style={{ display: 'block', marginBottom: '10px' }}>
           Telefone:
-          <input
+          <InputMask
+            mask="(99) 9 9999-9999"
             type="text"
+            placeholder='(XX) X XXXX-XXXX'
             name="telephone"
             value={formData.telephone}
             onChange={handleChange}
@@ -98,6 +107,7 @@ const TechnicianEdit = () => {
           <input
             type="email"
             name="email"
+            placeholder='Digite o e-mail'
             value={formData.email}
             onChange={handleChange}
             required
@@ -110,6 +120,7 @@ const TechnicianEdit = () => {
           <input
             type="text"
             name="address"
+            placeholder='Digite o endereço'
             value={formData.address}
             onChange={handleChange}
             required
@@ -145,9 +156,15 @@ const TechnicianEdit = () => {
         </button>
 
       </form>
-      <Link to="/" style={{ display: 'block', marginTop: '20px', backgroundColor: '#01060C', color: 'white', padding: '10px 15px', borderRadius: '5px', textDecoration: 'none' }}>
+
+      <br />
+      {error && <p style={{ color: 'red', marginTop: '10px' }}>{error}</p>}
+      {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
+      <br />
+      <Link to="/" style={{ display: 'block', marginTop: '20px', backgroundColor: '#000204', color: 'white', padding: '10px 15px', borderRadius: '5px', textDecoration: 'none' }}>
         Voltar para consulta
       </Link>
+
     </div>
   );
 };

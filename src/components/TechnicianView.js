@@ -32,7 +32,6 @@ const TechnicianView = () => {
   }
 
   return (
-    // <div className="technician-view-container" style={{ backgroundImage: 'url(/logo_pratica_branco.png)', backgroundSize: 'cover', backgroundPosition: 'center', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontFamily: 'Arial, sans-serif' }}>
 
     <div className="technician-list-container" style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <h2 style={{ fontSize: '24px', marginBottom: '20px', fontWeight: 'bold' }}>Detalhes do Cadastro</h2>
