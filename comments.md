@@ -25,6 +25,7 @@ Futuros pontos de melhoria:
 - Coluna data de criação do técnico;
 - layout do modal;
 - Arquitetura do Front;
+- Criação de componentes no Front para reutilização;
 
 
 <br>
@@ -33,6 +34,11 @@ Futuros pontos de melhoria:
 
 ## Tela de Consulta:
 ![Tela de Consulta](./public/home.png)
+
+
+## Testes na API utilizando Insomnia:
+![Tela de Consulta](./public/api.png)
+
 
 
 

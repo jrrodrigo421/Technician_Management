@@ -41,5 +41,5 @@ You may also see any lint errors in the console.
 <br>
 <br>
 
-## Tela de Consulta:
+## Query screen:
 ![Tela de Consulta](./public/home.png)
