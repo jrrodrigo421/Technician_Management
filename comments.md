@@ -2,7 +2,7 @@ Sistema para controle das empresas parceiras de assistência técnica;
 
 Projeto fullstack que permite o controle dos técnicos cadastrados no sistema e assim seu melhor gerenciamento, com possibilidade de visualização de detalhes, cadastramento de novos técnicos, edição e exlusão.
 
-Técnologias:
+Tecnologias:
 
 - Front End: React JS 
 - API: NodeJS (loopback/express)
