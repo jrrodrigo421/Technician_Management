@@ -1,11 +1,46 @@
 .form-container {
+  font-family: 'Arial, sans-serif';
   max-width: 600px;
   margin: 0 auto;
 }
 
-.form-label {
-  display: block;
+.input-container {
   margin-bottom: 10px;
+}
+
+.form-field {
+  padding-top: 5px;
+  width: calc(100% - 20px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  /* margin-left: 50px; */
+}
+
+.button-container {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cancel-button {
+  background-color: #DC250C;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form-label {
+  padding: 5px;
+  display: block;
+  /* margin-bottom: 5px; */
   font-weight: bold;
 }
 
@@ -15,6 +50,7 @@
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  /* margin-left: 50px; */
 }
 
 .form-button {
@@ -34,6 +70,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-right: 10px;
 }
 
 .form-message {

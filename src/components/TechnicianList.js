@@ -4,6 +4,7 @@ import axios from 'axios';
 
 
 
+
 import './TechnicianList.css';
 import './design.css'
 
@@ -11,6 +12,7 @@ const TechnicianList = () => {
   const [technicians, setTechnicians] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
 
 
   useEffect(() => {
@@ -62,33 +64,37 @@ const TechnicianList = () => {
   const filteredTechnicians = technicians.filter((technician) => !technician.deleted);
 
   return (
+
     <div className="technician-list-container">
       <h2>Página de consulta</h2>
       <Link to="/add" className="theme-button">Novo cadastro</Link>
+      <div className={`${filteredTechnicians.length > 8 ? 'scrollable' : ''}`}>
+        <table className="technician-table">
 
-      <table className="technician-table ">
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredTechnicians.map((technician) => (
-            <tr key={technician.id}>
-              <td>{technician.name}</td>
-
-              <td>
-                <Link to={`/view/${technician.id}`} className="action-button details-button">Detalhes</Link>
-                <Link to={`/edit/${technician.id}`} className="action-button edit-button">Editar</Link>
-                <button onClick={() => handleDelete(technician.id)} className="delete-button">
-                  Excluir
-                </button>
-              </td>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Ações</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {filteredTechnicians.map((technician) => (
+              <tr key={technician.id}>
+                <td>{technician.name}</td>
+
+                <td>
+                  <Link to={`/view/${technician.id}`} className="action-button details-button">Detalhes</Link>
+                  <Link to={`/edit/${technician.id}`} className="action-button edit-button">Editar</Link>
+                  <button onClick={() => handleDelete(technician.id)} className="delete-button">
+                    Excluir
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
     </div>
   );
 };

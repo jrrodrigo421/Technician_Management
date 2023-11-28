@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import InputMask from 'react-input-mask';
 
+import 'react-toastify/dist/ReactToastify.css';
+
 import './TechnicianForm.css'
+import { toast, ToastContainer } from 'react-toastify';
 
 const TechnicianForm = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +15,7 @@ const TechnicianForm = () => {
     email: '',
     address: '',
   });
+  const telephoneInputRef = useRef(null)
 
 
   const formatPhoneNumber = (phoneNumber) => {
@@ -40,9 +44,7 @@ const TechnicianForm = () => {
 
       const response = await axios.post('http://localhost:3030/technicians', formattedData);
 
-      setSuccessMessage('Cadastro do técnico alterado com sucesso!');
-
-      console.log('Técnico cadastrado com sucesso:', response.data);
+      toast.success('Técnico cadastrado com sucesso!')
 
       setFormData({
         name: '',
@@ -56,13 +58,13 @@ const TechnicianForm = () => {
 
       setError(null);
     } catch (error) {
-      console.error('Erro ao cadastrar técnico:', error);
 
       if (error.response) {
         setError(error.response.data.message || 'Erro ao processar a solicitação.');
       } else {
         setError(error.message || 'Erro ao processar a solicitação.');
       }
+      toast.error('Erro ao cadastrar técnico');
     }
   };
 
@@ -73,97 +75,93 @@ const TechnicianForm = () => {
   return (
 
     <div className="form-container" style={{ padding: '20px' }}>
-      <h2 style={{ marginBottom: '20px' }}>Cadastrar Técnico</h2>
+      <h2 style={{ padding: '20px' }}>Cadastrar Técnico</h2>
 
       <form onSubmit={handleSubmit}>
-        <label style={{ display: 'block', marginBottom: '10px', marginRight: '50px' }}>
-          Nome:
-          <input
-            type="text"
-            placeholder='Digite o nome'
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            style={{ marginLeft: '10px' }}
-          />
-        </label>
+        <div className='form-container'>
+          <label className='form-label'>
+            Nome:
+            <input
+              className='form-field'
+              type="text"
+              placeholder='Digite o nome'
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+
+            />
+          </label>
+        </div>
         <br />
-        <label style={{ display: 'block', marginBottom: '10px' }}>
-          Telefone:
-          <InputMask
-            type="text"
-            mask="(99) 9 9999-9999"
-            placeholder='(XX) X XXXX-XXXX'
-            name="telephone"
-            value={formData.telephone}
-            onChange={handleChange}
-            required
-            style={{ marginLeft: '10px' }}
-          />
-        </label>
+        <div className='form-container'>
+          <label className="form-label" >
+            Telefone:
+            <InputMask
+              className='form-field'
+              type="text"
+              mask="(99) 9 9999-9999"
+              placeholder='(XX) X XXXX-XXXX'
+              name="telephone"
+              value={formData.telephone}
+              onChange={handleChange}
+              required
+
+              ref={telephoneInputRef}
+            />
+          </label>
+        </div>
         <br />
-        <label style={{ display: 'block', marginBottom: '10px' }}>
-          Email:
-          <input
-            type="email"
-            placeholder='Digite o e-mail'
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            style={{ marginLeft: '15px' }}
-          />
-        </label>
+        <div className='form-container'>
+          <label className="form-label">
+            Email:
+            <input
+              className='form-field'
+              type="email"
+              placeholder='Digite o e-mail'
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </label>
+        </div>
         <br />
-        <label style={{ display: 'block', marginBottom: '10px' }}>
-          Endereço:
-          <input
-            type="text"
-            name="address"
-            placeholder='Digite o endereço'
-            value={formData.address}
-            onChange={handleChange}
-            required
-            style={{ marginLeft: '5px' }}
-          />
-        </label>
+        <div className='form-container'>
+          <label className="form-label" >
+            Endereço:
+            <input
+              className='form-field'
+              type="text"
+              name="address"
+              placeholder='Digite o endereço'
+              value={formData.address}
+              onChange={handleChange}
+              required
+
+            />
+          </label>
+        </div>
         <br />
         <button
           type="submit"
-          style={{
-            backgroundColor: '#4CAF50',
-            color: 'white',
-            padding: '10px 15px',
-            border: 'none',
-            borderRadius: '5px',
-            cursor: 'pointer',
-          }}
+          className='form-button'
+
         >
           Cadastrar
         </button>
         <button
           type="button" onClick={handleCancel}
-          style={{
-
-            backgroundColor: '#DC250C',
-            color: 'white',
-            padding: '10px 15px',
-            border: 'none',
-            borderRadius: '5px',
-            cursor: 'pointer',
-          }}
+          className='form-button-cancel'
         >
           Cancelar
         </button>
       </form>
-      <br />
-      <br />
 
-      {error && <p style={{ color: 'red', marginTop: '10px' }}>{error}</p>}
-
-      {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
       <br />
+      <ToastContainer />
+
+     
       <Link to="/" style={{ display: 'block', marginTop: '20px', backgroundColor: '#000204', color: 'white', padding: '10px 15px', borderRadius: '5px', textDecoration: 'none' }}>
         Voltar para consulta
       </Link>

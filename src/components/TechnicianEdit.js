@@ -2,7 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 
+import 'react-toastify/dist/ReactToastify.css';
+
+import './TechnicianForm.css'
+
 import InputMask from 'react-input-mask';
+import { toast, ToastContainer } from 'react-toastify';
+import { useRef } from 'react';
 
 const TechnicianEdit = () => {
   const { id } = useParams();
@@ -19,6 +25,7 @@ const TechnicianEdit = () => {
     email: '',
     address: '',
   });
+  const telephoneInputRef = useRef(null)
 
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
@@ -29,6 +36,8 @@ const TechnicianEdit = () => {
       try {
         const response = await axios.get(`http://localhost:3030/technicians/${id}`);
         setFormData(response.data);
+
+
       } catch (error) {
         console.error('Error fetching technician details:', error);
       }
@@ -53,8 +62,8 @@ const TechnicianEdit = () => {
 
       await axios.put(`http://localhost:3030/technicians/${id}`, formattedData);
 
+      toast.success('Técnico alterado com sucesso!')
 
-      setSuccessMessage('Cadastro do técnico alterado com sucesso!');
 
       setError(null);
 
@@ -63,6 +72,7 @@ const TechnicianEdit = () => {
     } catch (error) {
       console.error('Error editing technician:', error);
       setError(error.response?.data?.message || 'Erro ao editar técnico.');
+      toast.error('Erro ao cadastrar técnico');
     }
   };
 
@@ -71,100 +81,96 @@ const TechnicianEdit = () => {
   };
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h2 style={{ marginBottom: '20px' }}>Edição de cadastro:</h2>
+    <div className="form-container" style={{ padding: '20px' }}>
+      <h2 style={{ padding: '20px' }}>Cadastrar Técnico</h2>
 
       <form onSubmit={handleSubmit}>
-        <label style={{ display: 'block', marginBottom: '10px', marginRight: '50px' }}>
-          Name:
-          <input
-            type="text"
-            name="name"
-            placeholder='Digiete o nome'
-            value={formData.name}
-            onChange={handleChange}
-            required
-            style={{ marginLeft: '10px' }}
-          />
-        </label>
+        <div className='form-container'>
+          <label className='form-label'>
+            Nome:
+            <input
+              className='form-field'
+              type="text"
+              placeholder='Digite o nome'
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+
+            />
+          </label>
+        </div>
         <br />
-        <label style={{ display: 'block', marginBottom: '10px' }}>
-          Telefone:
-          <InputMask
-            mask="(99) 9 9999-9999"
-            type="text"
-            placeholder='(XX) X XXXX-XXXX'
-            name="telephone"
-            value={formData.telephone}
-            onChange={handleChange}
-            required
-            style={{ marginLeft: '10px' }}
-          />
-        </label>
+        <div className='form-container'>
+          <label className="form-label" >
+            Telefone:
+            <InputMask
+              className='form-field'
+              type="text"
+              mask="(99) 9 9999-9999"
+              placeholder='(XX) X XXXX-XXXX'
+              name="telephone"
+              value={formData.telephone}
+              onChange={handleChange}
+              required
+
+              ref={telephoneInputRef}
+            />
+          </label>
+        </div>
         <br />
-        <label style={{ display: 'block', marginBottom: '10px' }}>
-          Email:
-          <input
-            type="email"
-            name="email"
-            placeholder='Digite o e-mail'
-            value={formData.email}
-            onChange={handleChange}
-            required
-            style={{ marginLeft: '15px' }}
-          />
-        </label>
+        <div className='form-container'>
+          <label className="form-label">
+            Email:
+            <input
+              className='form-field'
+              type="email"
+              placeholder='Digite o e-mail'
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </label>
+        </div>
         <br />
-        <label style={{ display: 'block', marginBottom: '10px' }}>
-          Endereço:
-          <input
-            type="text"
-            name="address"
-            placeholder='Digite o endereço'
-            value={formData.address}
-            onChange={handleChange}
-            required
-            style={{ marginLeft: '5px' }}
-          />
-        </label>
+        <div className='form-container'>
+          <label className="form-label" >
+            Endereço:
+            <input
+              className='form-field'
+              type="text"
+              name="address"
+              placeholder='Digite o endereço'
+              value={formData.address}
+              onChange={handleChange}
+              required
+
+            />
+          </label>
+        </div>
         <br />
         <button
           type="submit"
-          style={{
-            backgroundColor: '#4CAF50',
-            color: 'white',
-            padding: '10px 15px',
-            border: 'none',
-            borderRadius: '5px',
-            cursor: 'pointer',
-          }}
+          className='form-button'
         >
-          Confirmar
+          Cadastrar
         </button>
-        <button onClick={handleCancel}
-          type="button"
-          style={{
-            backgroundColor: '#B72808',
-            color: 'white',
-            padding: '10px 15px',
-            border: 'none',
-            borderRadius: '5px',
-            cursor: 'pointer',
-          }}
+        <button
+          type="button" onClick={handleCancel}
+          className='form-button-cancel'
         >
           Cancelar
         </button>
-
       </form>
 
       <br />
-      {error && <p style={{ color: 'red', marginTop: '10px' }}>{error}</p>}
-      {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
-      <br />
+      <ToastContainer />
+
+
       <Link to="/" style={{ display: 'block', marginTop: '20px', backgroundColor: '#000204', color: 'white', padding: '10px 15px', borderRadius: '5px', textDecoration: 'none' }}>
         Voltar para consulta
       </Link>
-
     </div>
   );
 };

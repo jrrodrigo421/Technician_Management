@@ -51,7 +51,6 @@ const TechnicianView = () => {
         Voltar para Consulta
       </Link>
     </div>
-    // </div>
   );
 };
 
