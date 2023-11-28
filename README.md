@@ -1,7 +1,6 @@
 # FrontEnd - Prática
 
-## FrontEnd created using 
-[ReacJs](https://react.dev/learn) 
+## FrontEnd created using [ReacJs](https://react.dev/learn) 
 
 ## Environment Setting
 
