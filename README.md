@@ -37,7 +37,6 @@ You may also see any lint errors in the console.
 ### `npm test`
 
 <br>
-<br>
 
 ## Query screen:
 ![Tela de Consulta](./public/home.png)
