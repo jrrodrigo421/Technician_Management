@@ -71,6 +71,8 @@ const TechnicianList = () => {
 
     <div className="technician-list-container">
       <h2>Página de consulta</h2>
+      <br />
+      <br />
       <Link to="/add" className="theme-button">Novo cadastro</Link>
       <div className={`${filteredTechnicians.length > 8 ? 'scrollable' : ''}`}>
         <table className="technician-table">
