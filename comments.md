@@ -27,6 +27,11 @@ Futuros pontos de melhoria:
 - Arquitetura do Front;
 
 
+<br>
+<br>
+<br>
+
+## Tela de Consulta:
 ![Tela de Consulta](./public/home.png)
 
 
