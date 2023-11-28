@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import InputMask from 'react-input-mask';
 
+
 import 'react-toastify/dist/ReactToastify.css';
 
 import './TechnicianForm.css'
@@ -161,7 +162,7 @@ const TechnicianForm = () => {
       <br />
       <ToastContainer />
 
-     
+
       <Link to="/" style={{ display: 'block', marginTop: '20px', backgroundColor: '#000204', color: 'white', padding: '10px 15px', borderRadius: '5px', textDecoration: 'none' }}>
         Voltar para consulta
       </Link>

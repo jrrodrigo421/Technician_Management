@@ -2,21 +2,39 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" href="%PUBLIC_URL%/p.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
-      content="Web site created using create-react-app"
+      content=""
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/p.png" />
  
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
    
-    <title>React App</title>
+    <title>Gestão - Prática</title>
   </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+  <body >
+    <!-- <div id="image-container" onclick="redirectToPage()">
+      <img class="background-image" src="/public/logo_pratica_branco.png" onmouseover="changeCursor()" onmouseout="restoreCursor()" />
+    </div> -->
+    
+    <script>
+      function redirectToPage() {
+        window.location.href = 'URL_DA_PAGINA_DE_DESTINO';
+      }
+
+      function changeCursor() {
+        document.getElementById('image-container').style.cursor = 'pointer';
+      }
+
+      function restoreCursor() {
+        document.getElementById('image-container').style.cursor = 'auto';
+      }
+    </script>
+
+    <noscript>.</noscript>
     <div id="root"></div>
    
   </body>

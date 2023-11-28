@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 
@@ -47,6 +50,7 @@ const TechnicianList = () => {
       setTechnicians((prevTechnicians) =>
         prevTechnicians.filter((technician) => technician.id !== id)
       );
+      toast.success('Técnico excluído com sucesso!');
     } catch (error) {
       console.error('Error deleting technician:', error);
 
@@ -94,6 +98,7 @@ const TechnicianList = () => {
           </tbody>
         </table>
       </div>
+      <ToastContainer />
 
     </div>
   );
