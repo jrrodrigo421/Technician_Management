@@ -70,9 +70,9 @@ const TechnicianList = () => {
   return (
 
     <div className="technician-list-container">
-      <h2>Página de consulta</h2>
+      <h1>Página de consulta</h1>
       <br />
-      <br />
+
       <Link to="/add" className="theme-button">Novo cadastro</Link>
       <div className={`${filteredTechnicians.length > 8 ? 'scrollable' : ''}`}>
         <table className="technician-table">
@@ -89,7 +89,7 @@ const TechnicianList = () => {
                 <td>{technician.name}</td>
 
                 <td>
-                  <Link to={`/view/${technician.id}`} className="action-button details-button">Detalhes</Link>
+                  <Link to={`/view/${technician.id}`} className="action-button details-button">Visualizar</Link>
                   <Link to={`/edit/${technician.id}`} className="action-button edit-button">Editar</Link>
                   <button onClick={() => handleDelete(technician.id)} className="delete-button">
                     Excluir
