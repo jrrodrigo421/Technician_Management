@@ -39,7 +39,6 @@ You may also see any lint errors in the console.
 
 <br>
 <br>
-<br>
 
 ## Query screen:
 ![Tela de Consulta](./public/home.png)
